@@ -5,5 +5,6 @@ variable "instance_type" {
 }
 
 variable "regions" {
-  type = set(string)
+  type    = set(string)
+  default = ["eu-central-1", "eu-west-1"]
 }
