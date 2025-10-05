@@ -1,3 +1,10 @@
+locals {
+  deployment = merge(
+    var.deployment,
+    var.deployment.name == "" ? { name = basename(abspath(path.module)) } : {}
+  )
+}
+
 variable "deployment" {
   type = object({
     actor       = string # Github actor (deployer) of the deployment
@@ -10,6 +17,17 @@ variable "deployment" {
     sha         = string # Git (full-length, 40 char) commit SHA of the deployment
     time        = string # Timestamp of the deployment
   })
+  default = {
+    actor       = ""
+    environment = ""
+    name        = ""
+    ref         = ""
+    ref_name    = ""
+    repo        = ""
+    repository  = ""
+    sha         = ""
+    time        = ""
+  }
 }
 
 output "deployment" {
