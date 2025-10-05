@@ -1,7 +1,7 @@
 resource "aws_lb_target_group" "demo" {
   for_each = var.regions
   region   = each.value
-  name     = local.deployment.name
+  name     = local.deployment.short_name
   port     = 80
   protocol = "HTTP"
   vpc_id   = aws_default_vpc.default[each.value].id
