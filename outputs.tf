@@ -1,4 +1,4 @@
-output "ami" {
+output "amis" {
   value = data.aws_ami.amazon_linux
 }
 
@@ -20,6 +20,10 @@ output "default_vpcs" {
 
 output "global_accelerator" {
   value = aws_globalaccelerator_accelerator.demo
+}
+
+output "loadbalancers" {
+  value = aws_lb.demo
 }
 
 output "regions" {

@@ -13,9 +13,4 @@ resource "aws_globalaccelerator_endpoint_group" "demo" {
     endpoint_id = aws_lb.demo[each.value].arn
     weight      = 100
   }
-
-  port_override {
-    listener_port = 443
-    endpoint_port = 80
-  }
 }
