@@ -19,8 +19,3 @@ variable "instance_type" {
   type        = string
   default     = "t3.micro"
 }
-
-# variable "regions" {
-#   type    = set(string)
-#   default = ["eu-central-1", "eu-west-1"]
-# }
