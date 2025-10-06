@@ -1,7 +1,7 @@
 resource "aws_autoscaling_group" "web" {
   for_each            = local.loadbalancers
   region              = each.value.region
-  name                = local.deployment.name
+  name                = "${local.deployment.short_name}-${each.value.index}"
   vpc_zone_identifier = local.default_subnets[each.value.region][*].id
   target_group_arns   = [aws_lb_target_group.demo[each.key].arn]
   health_check_type   = "ELB"
