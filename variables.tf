@@ -1,4 +1,8 @@
 variable "regions" {
+  type = map(object({
+    traffic_dial_percentage        = number
+    endpoint_configuration_weights = list(number)
+  }))
   default = {
     "eu-central-1" = {
       traffic_dial_percentage        = "100"
