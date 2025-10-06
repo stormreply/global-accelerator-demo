@@ -1,9 +1,9 @@
 resource "aws_security_group" "web" {
   for_each    = var.regions
-  region      = each.value
+  region      = each.key
   name        = local.deployment.name
   description = "Security group for web servers"
-  vpc_id      = aws_default_vpc.default[each.value].id
+  vpc_id      = aws_default_vpc.default[each.key].id
 
   ingress {
     from_port   = 80

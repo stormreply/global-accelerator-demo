@@ -1,6 +1,6 @@
 data "aws_ami" "amazon_linux" {
   for_each    = var.regions
-  region      = each.value
+  region      = each.key
   most_recent = true
   owners      = ["amazon"]
 

@@ -8,3 +8,13 @@ resource "aws_default_subnet" "default" {
     Name = "Default subnet for ${each.value}"
   }
 }
+
+locals {
+  default_subnets = {
+    for region, _ in var.regions :
+    region => [
+      for subnet in aws_default_subnet.default :
+      subnet if subnet.region == region
+    ]
+  }
+}

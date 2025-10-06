@@ -1,6 +1,6 @@
 resource "aws_default_vpc" "default" {
   for_each = var.regions
-  region   = each.value
+  region   = each.key
   tags = {
     Name = "Default VPC"
   }

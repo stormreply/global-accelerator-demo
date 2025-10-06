@@ -26,6 +26,10 @@ output "loadbalancers" {
   value = aws_lb.demo
 }
 
+output "local_loadbalancers" {
+  value = local.loadbalancers
+}
+
 output "regions" {
   value = var.regions
 }
