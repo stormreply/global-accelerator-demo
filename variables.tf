@@ -1,3 +1,14 @@
+variable "create_network_manager" {
+  type    = bool
+  default = false
+}
+
+variable "instance_type" {
+  description = "EC2 instance type"
+  type        = string
+  default     = "t3.micro"
+}
+
 variable "regions" {
   type = map(object({
     traffic_dial_percentage        = number
@@ -13,9 +24,4 @@ variable "regions" {
       endpoint_configuration_weights = [128, 32]
     }
   }
-}
-variable "instance_type" {
-  description = "EC2 instance type"
-  type        = string
-  default     = "t3.micro"
 }
