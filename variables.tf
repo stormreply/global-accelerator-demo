@@ -1,6 +1,6 @@
 variable "create_network_manager" {
   type    = bool
-  default = false
+  default = true
 }
 
 variable "instance_type" {
