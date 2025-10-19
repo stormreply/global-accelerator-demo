@@ -6,11 +6,11 @@ variable "default_vpcs" {
   type = any
 }
 
-variable "deployment" {
+variable "loadbalancers" {
   type = any
 }
 
-variable "loadbalancers" {
+variable "name_tag" {
   type = any
 }
 
