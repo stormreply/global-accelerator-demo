@@ -1,7 +1,7 @@
 resource "aws_lb_target_group" "demo" {
   for_each = local.loadbalancers
   region   = each.value.region
-  name     = "${local.deployment.short_name}-${each.value.index}"
+  name     = "${local._metadata.short_name}-${each.value.index}"
   port     = 80
   protocol = "HTTP"
   vpc_id   = aws_default_vpc.default[each.value.region].id

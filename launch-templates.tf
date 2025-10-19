@@ -1,7 +1,7 @@
 resource "aws_launch_template" "web" {
   for_each      = var.regions
   region        = each.key
-  name          = local.deployment.name
+  name          = local._name_tag
   image_id      = data.aws_ami.amazon_linux[each.key].id
   instance_type = var.instance_type
 

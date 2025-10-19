@@ -1,7 +1,7 @@
 resource "aws_lb" "demo" {
   for_each           = local.loadbalancers
   region             = each.value.region
-  name               = "${local.deployment.short_name}-${each.value.index}"
+  name               = "${local._metadata.short_name}-${each.value.index}"
   load_balancer_type = "application"
   security_groups    = [aws_security_group.web[each.value.region].id]
   subnets            = local.default_subnets[each.value.region][*].id

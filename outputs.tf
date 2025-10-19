@@ -1,3 +1,7 @@
+output "_name_tag" {
+  value = local._name_tag
+}
+
 output "amis" {
   value = data.aws_ami.amazon_linux
 }
@@ -8,10 +12,6 @@ output "availability_zones" {
 
 output "default_subnets" {
   value = local.default_subnets
-}
-
-output "default_tags" {
-  value = local.default_tags
 }
 
 output "default_vpcs" {
