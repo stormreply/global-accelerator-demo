@@ -1,5 +1,5 @@
 resource "aws_networkmanager_global_network" "demo" {
-  description = "Global network for ${var.deployment.name} - Global Accelerator deployment"
+  description = "Global network for ${var.name_tag} - Global Accelerator deployment"
 
   tags = {
     Name = "${var.name_tag}-global-network"
