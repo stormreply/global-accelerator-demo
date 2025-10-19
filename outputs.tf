@@ -1,7 +1,3 @@
-output "_name_tag" {
-  value = local._name_tag
-}
-
 output "amis" {
   value = data.aws_ami.amazon_linux
 }
