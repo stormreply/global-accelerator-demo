@@ -15,7 +15,7 @@ resource "aws_networkmanager_core_network_policy_attachment" "demo" {
     segments = [
       {
         name                          = "production"
-        description                   = "Production segment for ${var.deployment.name}"
+        description                   = "Production segment for ${var.name_tag}"
         require-attachment-acceptance = false
         edge-locations                = keys(var.regions)
       }

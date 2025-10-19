@@ -10,7 +10,7 @@ resource "aws_networkmanager_site" "regional" {
   }
 
   tags = {
-    Name                  = "${var.deployment.name}-site-${each.key}"
+    Name                  = "${var.name_tag}-site-${each.key}"
     Region                = each.key
     TrafficDialPercentage = each.value.traffic_dial_percentage
   }

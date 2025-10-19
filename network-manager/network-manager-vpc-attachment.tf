@@ -6,7 +6,7 @@ resource "aws_networkmanager_vpc_attachment" "demo" {
   vpc_arn         = var.default_vpcs[each.key].arn
 
   tags = {
-    Name   = "${var.deployment.name}-vpc-${each.key}"
+    Name   = "${var.name_tag}-vpc-${each.key}"
     Region = each.key
   }
 }

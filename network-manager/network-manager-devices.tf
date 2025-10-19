@@ -7,7 +7,7 @@ resource "aws_networkmanager_device" "loadbalancer" {
   site_id           = aws_networkmanager_site.regional[each.value.region].id
 
   tags = {
-    Name              = "${var.deployment.name}-alb-${each.key}"
+    Name              = "${var.name_tag}-alb-${each.key}"
     Region            = each.value.region
     LoadBalancerIndex = each.value.index
     Weight            = each.value.weight

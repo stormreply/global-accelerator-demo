@@ -8,7 +8,7 @@ resource "aws_networkmanager_global_network" "demo" {
 
 resource "aws_networkmanager_core_network" "demo" {
   global_network_id = aws_networkmanager_global_network.demo.id
-  description       = "Core network for ${var.deployment.name} Global Accelerator topology"
+  description       = "Core network for ${var.name_tag} Global Accelerator topology"
 
   tags = {
     Name = "${var.name_tag}-core-network"

@@ -10,7 +10,7 @@ resource "aws_networkmanager_connect_attachment" "accelerator_endpoints" {
   }
 
   tags = {
-    Name   = "${var.deployment.name}-connect-${each.key}"
+    Name   = "${var.name_tag}-connect-${each.key}"
     Region = each.key
   }
 }

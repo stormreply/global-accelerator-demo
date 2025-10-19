@@ -11,7 +11,7 @@ resource "aws_networkmanager_link" "regional" {
   }
 
   tags = {
-    Name   = "${var.deployment.name}-link-${each.key}"
+    Name   = "${var.name_tag}-link-${each.key}"
     Region = each.key
   }
 }
