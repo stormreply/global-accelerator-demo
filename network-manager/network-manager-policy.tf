@@ -1,7 +1,9 @@
 resource "aws_networkmanager_core_network_policy_attachment" "demo" {
   core_network_id = aws_networkmanager_core_network.demo.id
+  
   policy_document = jsonencode({
     version = "2021.12"
+
     core-network-configuration = {
       vpn-ecmp-support = false
       asn-ranges       = ["64512-64520"]
@@ -12,6 +14,7 @@ resource "aws_networkmanager_core_network_policy_attachment" "demo" {
         }
       ]
     }
+
     segments = [
       {
         name                          = "production"
@@ -20,6 +23,7 @@ resource "aws_networkmanager_core_network_policy_attachment" "demo" {
         edge-locations                = keys(var.regions)
       }
     ]
+
     # segment-actions = [
     #   {
     #     action  = "share"
@@ -46,5 +50,15 @@ resource "aws_networkmanager_core_network_policy_attachment" "demo" {
     #     }
     #   }
     # ]
+
   })
+
+  provisioner "local-exec" {
+    when    = create
+    quiet   = false
+    command = "bash ./local-exec/wait-policy-live.sh $core_network_id"
+    environment = {
+      core_network_id = self.core_network_id
+    }
+  }
 }

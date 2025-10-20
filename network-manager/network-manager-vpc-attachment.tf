@@ -9,4 +9,6 @@ resource "aws_networkmanager_vpc_attachment" "demo" {
     Name   = "${var.name_tag}-vpc-${each.key}"
     Region = each.key
   }
+
+  depends_on = [aws_networkmanager_core_network_policy_attachment.demo]
 }
