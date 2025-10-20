@@ -4,7 +4,7 @@ echo "BEGIN -- $(basename $0)"
 
 core_network_id=$1
 
-while [ "$CORE_POLICY_STATE" != "LIVE, LASTEST" ] ; do
+while [ "$CORE_POLICY_STATE" != "LIVE, LATEST" ] ; do
     sleep 10
     CORE_POLICY_STATE=$(
         aws networkmanager get-core-network-policy \
