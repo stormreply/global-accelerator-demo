@@ -1,6 +1,6 @@
 resource "aws_networkmanager_core_network_policy_attachment" "demo" {
   core_network_id = aws_networkmanager_core_network.demo.id
-  
+
   policy_document = jsonencode({
     version = "2021.12"
 
