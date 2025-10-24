@@ -1,7 +1,7 @@
 resource "aws_globalaccelerator_listener" "demo" {
   accelerator_arn = aws_globalaccelerator_accelerator.demo.id
-  client_affinity = "SOURCE_IP"
-  protocol        = "TCP"
+  # client_affinity = "SOURCE_IP" # NONE
+  protocol = "TCP"
 
   port_range {
     from_port = 80
