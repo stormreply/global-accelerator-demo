@@ -5,6 +5,6 @@ module "network-manager" {
   default_subnets = local.default_subnets
   default_vpcs    = aws_default_vpc.default
   loadbalancers   = local.loadbalancers
-  name_tag        = local._name_tag
+  name_tag        = local._deployment
   regions         = var.regions
 }

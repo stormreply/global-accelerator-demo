@@ -1,8 +1,8 @@
 resource "aws_security_group" "web" {
   for_each    = var.regions
   region      = each.key
-  name        = local._name_tag
-  description = "Security group for ${local._name_tag} endpoint servers in ${each.key}"
+  name        = local._deployment
+  description = "Security group for ${local._deployment} endpoint servers in ${each.key}"
   vpc_id      = aws_default_vpc.default[each.key].id
 
   ingress {
@@ -27,6 +27,6 @@ resource "aws_security_group" "web" {
   }
 
   tags = {
-    Name = local._name_tag
+    Name = local._deployment
   }
 }

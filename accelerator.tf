@@ -1,5 +1,5 @@
 resource "aws_globalaccelerator_accelerator" "demo" {
-  name            = local._name_tag
+  name            = local._deployment
   ip_address_type = "IPV4"
   enabled         = true
 
