@@ -7,7 +7,7 @@ resource "aws_globalaccelerator_endpoint_group" "demo" {
   health_check_path             = "/"    # /health
   health_check_protocol         = "HTTP" # TCP
   health_check_port             = 80
-  threshold_count               = 3
+  threshold_count               = 1
 
   dynamic "endpoint_configuration" {
     for_each = {
