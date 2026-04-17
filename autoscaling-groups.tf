@@ -5,8 +5,8 @@ resource "aws_autoscaling_group" "web" {
   vpc_zone_identifier = local.default_subnets[each.value.region][*].id
   target_group_arns   = [aws_lb_target_group.demo[each.key].arn]
   health_check_type   = "ELB"
-  min_size            = 1
-  max_size            = 2
+  min_size            = 0
+  max_size            = 1
   desired_capacity    = 1
 
   launch_template {
