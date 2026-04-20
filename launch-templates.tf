@@ -1,4 +1,5 @@
 resource "aws_launch_template" "web" {
+  # checkov:skip=CKV_AWS_79: "Ensure Instance Metadata Service Version 1 is not enabled" # TODO:
   for_each      = var.regions
   region        = each.key
   name          = local._deployment

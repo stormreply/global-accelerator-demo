@@ -75,7 +75,7 @@ add_dir() {
 add_dir ".github/workflows"
 add_dir ".support"
 
-for f in "_sltconf.tf" "providers.tf" "terraform.tf"; do
+for f in "_sltconf.tf" "providers.tf" "terraform.tf" ".pre-commit-config.yaml"; do
     [[ -f "$TEMPLATE_ROOT/$f" ]] && \
     TEMPLATE_FILES+=("$f")
 done

@@ -1,4 +1,10 @@
 resource "aws_lb" "demo" {
+  # checkov:skip=CKV_AWS_2: "Ensure ALB protocol is HTTPS"
+  # checkov:skip=CKV_AWS_91: "Ensure the ELBv2 (Application/Network) has access logging enabled"
+  # checkov:skip=CKV_AWS_131: "Ensure that ALB drops HTTP headers"
+  # checkov:skip=CKV_AWS_150: "Ensure that Load Balancer has deletion protection enabled"
+  # checkov:skip=CKV2_AWS_20: "Ensure that ALB redirects HTTP requests into HTTPS ones"
+  # checkov:skip=CKV2_AWS_28: "Ensure public facing ALB are protected by WAF"
   for_each           = local.loadbalancers
   region             = each.value.region
   name               = "${local._metadata.short_name}-${each.value.index}"

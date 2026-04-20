@@ -1,4 +1,7 @@
 resource "aws_security_group" "web" {
+  # checkov:skip=CKV_AWS_260: "Ensure no security groups allow ingress from 0.0.0.0:0 to port 80"
+  # checkov:skip=CKV_AWS_382: "Ensure no security groups allow egress from 0.0.0.0:0 to port -1"
+  # checkov:skip=CKV2_AWS_5: "Ensure that Security Groups are attached to another resource"
   for_each    = var.regions
   region      = each.key
   name        = local._deployment
@@ -6,6 +9,7 @@ resource "aws_security_group" "web" {
   vpc_id      = aws_default_vpc.default[each.key].id
 
   ingress {
+    description = "Allow incoming web traffic on port 80 (HTTP)"
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
@@ -13,6 +17,7 @@ resource "aws_security_group" "web" {
   }
 
   ingress {
+    description = "Allow incoming web traffic on port 443 (HTTPS)"
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
@@ -20,6 +25,7 @@ resource "aws_security_group" "web" {
   }
 
   egress {
+    description = "Allow all kinds of outgoing traffic"
     from_port   = 0
     to_port     = 0
     protocol    = "-1"

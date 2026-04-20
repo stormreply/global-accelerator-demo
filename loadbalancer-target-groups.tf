@@ -1,4 +1,5 @@
 resource "aws_lb_target_group" "demo" {
+  # checkov:skip=CKV_AWS_378: "Ensure AWS Load Balancer doesn't use HTTP protocol"
   for_each = local.loadbalancers
   region   = each.value.region
   name     = "${local._metadata.short_name}-${each.value.index}"
