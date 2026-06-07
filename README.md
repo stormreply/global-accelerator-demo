@@ -1,7 +1,7 @@
 ### Storm Library for Terraform
 # Global Accelerator Demo
 
-A demo of AWS Global Accelerator
+A demo of AWS Global Accelerator.
 
 [![Check](https://github.com/stormreply/slt-member-example/actions/workflows/check.yaml/badge.svg)](https://github.com/stormreply/slt-member-example/actions/workflows/check.yaml)
 [![Plan](https://github.com/stormreply/slt-member-example/actions/workflows/plan.yaml/badge.svg)](https://github.com/stormreply/slt-member-example/actions/workflows/plan.yaml)
