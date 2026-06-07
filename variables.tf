@@ -1,15 +1,28 @@
 variable "create_network_manager" {
-  type    = bool
-  default = false
+  description = <<-EOD
+    Bool for creating a network manager visualization of this
+    Global Accelaerator setup. Beta.
+  EOD
+  type        = bool
+  default     = false
 }
 
 variable "instance_type" {
-  description = "EC2 instance type"
+  description = <<-EOD
+    EC2 instance type to be used for the Global Accelerator endpoints
+  EOD
   type        = string
   default     = "t3.micro"
 }
 
 variable "regions" {
+  description = <<-EOD
+    A map of regions where endpoints for this Global Accelerator
+    are to be configured. Keys of this map are region names like
+    e.g. "eu-central-1", values are objects as seen in the type
+    definition.
+  EOD
+
   type = map(object({
     traffic_dial_percentage        = number
     endpoint_configuration_weights = list(number)
