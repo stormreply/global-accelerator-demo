@@ -50,15 +50,62 @@ Follow these steps in order to explore this demo:
 <summary>Click to show</summary>
 
 <!-- BEGIN_TF_DOCS -->
+## Requirements
 
-This part is rendered by Terraform docs. If you have pre-commit installed
-in your demo repository, Terraform docs will be executed automatically on
-commit. SLT workflows will use the very same .pre-commit-config.yaml on
-the code, so if you're not using pre-commit, there will be a re-creation
-of the Terraform docs during workflow execution, causing the workflow to
-fail. The solution would be here to use pre-commit and have changes in
-the README.md committed _before_ triggering a workflow.
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 6 |
 
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 6 |
+
+## Modules
+
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_network-manager"></a> [network-manager](#module\_network-manager) | ./network-manager | n/a |
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [aws\_autoscaling\_group.web](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group) | resource |
+| [aws\_default\_subnet.default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/default_subnet) | resource |
+| [aws\_default\_vpc.default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/default_vpc) | resource |
+| [aws\_globalaccelerator\_accelerator.demo](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/globalaccelerator_accelerator) | resource |
+| [aws\_globalaccelerator\_endpoint\_group.demo](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/globalaccelerator_endpoint_group) | resource |
+| [aws\_globalaccelerator\_listener.demo](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/globalaccelerator_listener) | resource |
+| [aws\_launch\_template.web](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template) | resource |
+| [aws\_lb.demo](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb) | resource |
+| [aws\_lb\_listener.demo](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_listener) | resource |
+| [aws\_lb\_target\_group.demo](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_target_group) | resource |
+| [aws\_security\_group.web](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
+| [aws\_ami.amazon\_linux](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ami) | data source |
+| [aws\_availability\_zones.available](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/availability_zones) | data source |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input__metadata"></a> [\_metadata](#input\_\_metadata) | Select metadata passed from GitHub Workflows | <pre>object({<br/>    actor      = string # Github actor (deployer) of the deployment<br/>    catalog_id = string # SLT catalog id of this module<br/>    deployment = string # slt-<catalod_id>-<repo>-<actor><br/>    ref        = string # Git reference of the deployment<br/>    ref_name   = string # Git ref_name (branch) of the deployment<br/>    repo       = string # GitHub short repository name (without owner) of the deployment<br/>    repository = string # GitHub full repository name (including owner) of the deployment<br/>    sha        = string # Git (full-length, 40 char) commit SHA of the deployment<br/>    short_name = string # slt-<catalog_id>-<actor><br/>    time       = string # Timestamp of the deployment<br/>  })</pre> | <pre>{<br/>  "actor": "",<br/>  "catalog_id": "",<br/>  "deployment": "",<br/>  "ref": "",<br/>  "ref_name": "",<br/>  "repo": "",<br/>  "repository": "",<br/>  "sha": "",<br/>  "short_name": "",<br/>  "time": ""<br/>}</pre> | no |
+| <a name="input_create_network_manager"></a> [create\_network\_manager](#input\_create\_network\_manager) | n/a | `bool` | `false` | no |
+| <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | EC2 instance type | `string` | `"t3.micro"` | no |
+| <a name="input_regions"></a> [regions](#input\_regions) | n/a | <pre>map(object({<br/>    traffic_dial_percentage        = number<br/>    endpoint_configuration_weights = list(number)<br/>  }))</pre> | <pre>{<br/>  "eu-central-1": {<br/>    "endpoint_configuration_weights": [<br/>      128,<br/>      32<br/>    ],<br/>    "traffic_dial_percentage": "100"<br/>  },<br/>  "eu-west-1": {<br/>    "endpoint_configuration_weights": [<br/>      128,<br/>      32<br/>    ],<br/>    "traffic_dial_percentage": "100"<br/>  }<br/>}</pre> | no |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output__slt_config"></a> [\_slt\_config](#output\_\_slt\_config) | Map of SLT configuration |
+| <a name="output_amis"></a> [amis](#output\_amis) | n/a |
+| <a name="output_availability_zones"></a> [availability\_zones](#output\_availability\_zones) | n/a |
+| <a name="output_global_accelerator"></a> [global\_accelerator](#output\_global\_accelerator) | n/a |
+| <a name="output_local_loadbalancers"></a> [local\_loadbalancers](#output\_local\_loadbalancers) | n/a |
+| <a name="output_regions"></a> [regions](#output\_regions) | n/a |
 <!-- END_TF_DOCS -->
 
 </details>
