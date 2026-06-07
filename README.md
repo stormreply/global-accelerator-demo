@@ -25,8 +25,7 @@ This demo can be built using GitHub Actions. In order to do so
 - [Install the Storm Library for Terraform](https://github.com/stormreply/storm-library-for-terraform/blob/main/docs/INSTALL-LIBRARY.md)
 - [Deploy this member repository](https://github.com/stormreply/storm-library-for-terraform/blob/main/docs/DEPLOY-MEMBER.md)
 
-Deployment of this member should take <!-- BEGIN_REPLACE --> _X_ <!-- END_REPLACE -->
-minutes on GitHub resources.
+Deployment of this member should take less than 4 minutes on GitHub resources.
 
 ## Architecture
 
@@ -92,20 +91,19 @@ Follow these steps in order to explore this demo:
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input__metadata"></a> [\_metadata](#input\_\_metadata) | Select metadata passed from GitHub Workflows | <pre>object({<br/>    actor      = string # Github actor (deployer) of the deployment<br/>    catalog_id = string # SLT catalog id of this module<br/>    deployment = string # slt-<catalod_id>-<repo>-<actor><br/>    ref        = string # Git reference of the deployment<br/>    ref_name   = string # Git ref_name (branch) of the deployment<br/>    repo       = string # GitHub short repository name (without owner) of the deployment<br/>    repository = string # GitHub full repository name (including owner) of the deployment<br/>    sha        = string # Git (full-length, 40 char) commit SHA of the deployment<br/>    short_name = string # slt-<catalog_id>-<actor><br/>    time       = string # Timestamp of the deployment<br/>  })</pre> | <pre>{<br/>  "actor": "",<br/>  "catalog_id": "",<br/>  "deployment": "",<br/>  "ref": "",<br/>  "ref_name": "",<br/>  "repo": "",<br/>  "repository": "",<br/>  "sha": "",<br/>  "short_name": "",<br/>  "time": ""<br/>}</pre> | no |
-| <a name="input_create_network_manager"></a> [create\_network\_manager](#input\_create\_network\_manager) | n/a | `bool` | `false` | no |
-| <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | EC2 instance type | `string` | `"t3.micro"` | no |
-| <a name="input_regions"></a> [regions](#input\_regions) | n/a | <pre>map(object({<br/>    traffic_dial_percentage        = number<br/>    endpoint_configuration_weights = list(number)<br/>  }))</pre> | <pre>{<br/>  "eu-central-1": {<br/>    "endpoint_configuration_weights": [<br/>      128,<br/>      32<br/>    ],<br/>    "traffic_dial_percentage": "100"<br/>  },<br/>  "eu-west-1": {<br/>    "endpoint_configuration_weights": [<br/>      128,<br/>      32<br/>    ],<br/>    "traffic_dial_percentage": "100"<br/>  }<br/>}</pre> | no |
+| <a name="input_create_network_manager"></a> [create\_network\_manager](#input\_create\_network\_manager) | Bool for creating a network manager visualization of this<br/>Global Accelaerator setup. Beta. | `bool` | `false` | no |
+| <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | EC2 instance type to be used for the Global Accelerator endpoints | `string` | `"t3.micro"` | no |
+| <a name="input_regions"></a> [regions](#input\_regions) | A map of regions where endpoints for this Global Accelerator<br/>are to be configured. Keys of this map are region names like<br/>e.g. "eu-central-1", values are objects as seen in the type<br/>definition. | <pre>map(object({<br/>    traffic_dial_percentage        = number<br/>    endpoint_configuration_weights = list(number)<br/>  }))</pre> | <pre>{<br/>  "eu-central-1": {<br/>    "endpoint_configuration_weights": [<br/>      128,<br/>      32<br/>    ],<br/>    "traffic_dial_percentage": "100"<br/>  },<br/>  "eu-west-1": {<br/>    "endpoint_configuration_weights": [<br/>      128,<br/>      32<br/>    ],<br/>    "traffic_dial_percentage": "100"<br/>  }<br/>}</pre> | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
 | <a name="output__slt_config"></a> [\_slt\_config](#output\_\_slt\_config) | Map of SLT configuration |
-| <a name="output_amis"></a> [amis](#output\_amis) | n/a |
-| <a name="output_availability_zones"></a> [availability\_zones](#output\_availability\_zones) | n/a |
-| <a name="output_global_accelerator"></a> [global\_accelerator](#output\_global\_accelerator) | n/a |
-| <a name="output_local_loadbalancers"></a> [local\_loadbalancers](#output\_local\_loadbalancers) | n/a |
-| <a name="output_regions"></a> [regions](#output\_regions) | n/a |
+| <a name="output__summary"></a> [\_summary](#output\_\_summary) | Key-value pairs to be published in the GITHUB\_STEP\_SUMMARY |
+| <a name="output_global_accelerator"></a> [global\_accelerator](#output\_global\_accelerator) | The Global Accelerator terraform object |
+| <a name="output_local_loadbalancers"></a> [local\_loadbalancers](#output\_local\_loadbalancers) | A list with all terraform loadbalancer objects involved<br/>in this Global Accelerator setup. |
+| <a name="output_regions"></a> [regions](#output\_regions) | The configuration of all regions involved in this Global<br/>Accelerator setup. |
 <!-- END_TF_DOCS -->
 
 </details>
