@@ -33,20 +33,13 @@ Deployment of this member should take less than 4 minutes on GitHub resources.
 
 ## Explore this demo
 
-<!-- BEGIN_REPLACE -->
 Follow these steps in order to explore this demo:
 
-1. Provide a sequence of steps here that the user
-   should follow in order to profit in the best way from this demo. In
-   your description of steps, assume users have solid knowledge of the
-   AWS Console, but not more.
+1. TBD
 1. ...
-<!-- END_REPLACE -->
-
-## Terraform Docs
 
 <details>
-<summary>Click to show</summary>
+<summary><h2>Terraform Docs</h2></summary>
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
