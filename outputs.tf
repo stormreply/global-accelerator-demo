@@ -1,31 +1,36 @@
-output "amis" {
-  value = data.aws_ami.amazon_linux
-}
-
-output "availability_zones" {
-  value = local.availability_zones
-}
-
-# output "default_subnets" {
-#   value = local.default_subnets
+# output "amis" {
+#   value = data.aws_ami.amazon_linux
 # }
 
-# output "default_vpcs" {
-#   value = aws_default_vpc.default
+# output "availability_zones" {
+#   value = local.availability_zones
 # }
 
 output "global_accelerator" {
-  value = aws_globalaccelerator_accelerator.demo
+  description = "The Global Accelerator terraform object"
+  value       = aws_globalaccelerator_accelerator.demo
 }
 
-# output "loadbalancers" {
-#   value = aws_lb.demo
-# }
-
 output "local_loadbalancers" {
-  value = local.loadbalancers
+  description = <<-EOD
+    A list with all terraform loadbalancer objects involved
+    in this Global Accelerator setup.
+  EOD
+  value       = local.loadbalancers
 }
 
 output "regions" {
-  value = var.regions
+  description = <<-EOD
+    The configuration of all regions involved in this Global
+    Accelerator setup.
+  EOD
+  value       = var.regions
+}
+
+output "_summary" {
+  description = "Key-value pairs to be published in the GITHUB_STEP_SUMMARY"
+  value = {
+    global_accelerator_dns_name = aws_globalaccelerator_accelerator.demo.dns_name
+    regions                     = var.regions
+  }
 }
