@@ -11,6 +11,11 @@ output "global_accelerator" {
   value       = aws_globalaccelerator_accelerator.demo
 }
 
+output "endpoint_groups" {
+  description = "The Global Accelerator endpoint groups"
+  value       = aws_globalaccelerator_endpoint_group.demo
+}
+
 output "local_loadbalancers" {
   description = <<-EOD
     A list with all terraform loadbalancer objects involved
