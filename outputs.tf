@@ -30,7 +30,7 @@ output "regions" {
 output "_summary" {
   description = "Key-value pairs to be published in the GITHUB_STEP_SUMMARY"
   value = {
-    global_accelerator_dns_name = aws_globalaccelerator_accelerator.demo.dns_name
-    regions                     = var.regions
+    "Global Accelerator DNS name" = aws_globalaccelerator_accelerator.demo.dns_name
+    "Regions"                     = var.regions
   }
 }
