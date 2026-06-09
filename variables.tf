@@ -30,11 +30,11 @@ variable "regions" {
   default = {
     "eu-central-1" = {
       traffic_dial_percentage        = "100"
-      endpoint_configuration_weights = [128, 32]
+      endpoint_configuration_weights = [192, 64] # use a 3:1 distribution
     }
     "eu-west-1" = {
       traffic_dial_percentage        = "100"
-      endpoint_configuration_weights = [128, 32]
+      endpoint_configuration_weights = [128, 128] # use a 1:1 distribution
     }
   }
 }
