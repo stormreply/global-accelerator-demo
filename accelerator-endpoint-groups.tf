@@ -16,7 +16,7 @@ resource "aws_globalaccelerator_endpoint_group" "demo" {
 
   # The percentage of traffic to send to an AWS Region. Default 100 means
   # every client would be routed to the closest endpoint (group).
-  traffic_dial_percentage = 100
+  traffic_dial_percentage = each.value.traffic_dial_percentage
 
   dynamic "endpoint_configuration" {
     for_each = {
