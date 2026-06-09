@@ -7,7 +7,7 @@ resource "aws_lb" "demo" {
   # checkov:skip=CKV2_AWS_28: "Ensure public facing ALB are protected by WAF"
   for_each           = local.loadbalancers
   region             = each.value.region
-  name               = "${local._metadata.short_name}-${local.region_shortcut}-${each.value.index}"
+  name               = "${local._metadata.short_name}-${each.value.index}"
   load_balancer_type = "application"
   security_groups    = [aws_security_group.web[each.value.region].id]
   subnets            = local.default_subnets[each.value.region][*].id

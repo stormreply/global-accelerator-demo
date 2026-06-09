@@ -6,8 +6,8 @@ data "aws_availability_zones" "available" {
 
 locals {
   availability_zones = data.aws_availability_zones.available
-  region_shortcut = [
-    for region, _ in var.regions :
-    split("-", local.availability_zones[region][0])[0]
-  ]
+  # region_shortcut = [
+  #   for region, _ in var.regions :
+  #   split("-", local.availability_zones[region][0])[0]
+  # ]
 }
