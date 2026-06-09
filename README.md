@@ -94,6 +94,7 @@ Follow these steps in order to explore this demo:
 |------|-------------|
 | <a name="output__slt_config"></a> [\_slt\_config](#output\_\_slt\_config) | Map of SLT configuration |
 | <a name="output__summary"></a> [\_summary](#output\_\_summary) | Key-value pairs to be published in the GITHUB\_STEP\_SUMMARY |
+| <a name="output_availability_zones"></a> [availability\_zones](#output\_availability\_zones) | n/a |
 | <a name="output_endpoint_groups"></a> [endpoint\_groups](#output\_endpoint\_groups) | The Global Accelerator endpoint groups |
 | <a name="output_global_accelerator"></a> [global\_accelerator](#output\_global\_accelerator) | The Global Accelerator terraform object |
 | <a name="output_local_loadbalancers"></a> [local\_loadbalancers](#output\_local\_loadbalancers) | A list with all terraform loadbalancer objects involved<br/>in this Global Accelerator setup. |
