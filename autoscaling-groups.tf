@@ -19,8 +19,12 @@ resource "aws_autoscaling_group" "web" {
   }
 
   tag {
-    key                 = "Name"
-    value               = "${local._metadata.short_name}-${each.value.index}"
+    key = "Name"
+    value = join("-", [
+      local._metadata.short_name,
+      local.region_shortcut[each.value.region],
+      each.value.index
+    ])
     propagate_at_launch = true
   }
 

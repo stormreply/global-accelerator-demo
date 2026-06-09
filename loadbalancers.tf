@@ -10,7 +10,6 @@ resource "aws_lb" "demo" {
   name = join("-", [
     local._metadata.short_name,
     local.region_shortcut[each.value.region],
-    "lb",
     each.value.index
   ])
   load_balancer_type = "application"
