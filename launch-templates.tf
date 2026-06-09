@@ -1,5 +1,5 @@
 resource "aws_launch_template" "web" {
-  # checkov:skip=CKV_AWS_79: "Ensure Instance Metadata Service Version 1 is not enabled" # TODO:
+  # checkov:skip=CKV_AWS_79: "Ensure Instance Metadata Service Version 1 is not enabled"
   for_each      = var.regions
   region        = each.key
   name          = local._deployment
@@ -12,10 +12,11 @@ resource "aws_launch_template" "web" {
       #!/bin/bash
       yum update -y
       yum install -y httpd
+      echo -e "\n\nKeepAlive Off" >> /etc/httpd/conf/httpd.conf
       systemctl start httpd
       systemctl enable httpd
-      echo "<h1>Region Server - ${each.key}</h1>" > /var/www/html/index.html
-      echo "<p>Instance ID: $(curl -s http://169.254.169.254/latest/meta-data/instance-id)</p>" >> /var/www/html/index.html
+      echo "<h3>Instance ID: $(curl -s http://169.254.169.254/latest/meta-data/instance-id)</h3>" > /var/www/html/index.html
+      echo "<h3>Region: ${each.key}</h3>" >> /var/www/html/index.html
       echo "OK" > /var/www/html/health
     EOF
   )
