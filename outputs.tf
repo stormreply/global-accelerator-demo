@@ -2,9 +2,9 @@
 #   value = data.aws_ami.amazon_linux
 # }
 
-# output "availability_zones" {
-#   value = local.availability_zones
-# }
+output "availability_zones" {
+  value = local.availability_zones
+}
 
 output "global_accelerator" {
   description = "The Global Accelerator terraform object"
