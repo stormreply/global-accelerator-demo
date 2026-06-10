@@ -13,8 +13,18 @@ resource "aws_lb" "demo" {
     each.value.index
   ])
   load_balancer_type = "application"
-  security_groups    = [aws_security_group.web[each.value.region].id]
-  subnets            = local.default_subnets[each.value.region][*].id
+
+  # for the sake of the demo, we try to close a connection as soon as possible
+  # in order to better be able to demonstrate the dial and weight features of
+  # Global Accelerator. Curl will close the connection reight after the call,
+  # but browsers will try to keep the connection for better user experience.
+  # below settings should help to get rid of a connection as quick as possible.
+  #
+  enable_http2      = false # http2 would try to keep conn open
+  client_keep_alive = 60    # 60 seconds is the minumum
+
+  security_groups = [aws_security_group.web[each.value.region].id]
+  subnets         = local.default_subnets[each.value.region][*].id
 }
 
 locals {

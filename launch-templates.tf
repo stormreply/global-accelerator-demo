@@ -1,4 +1,5 @@
 resource "aws_launch_template" "web" {
+  # TODO: if need to log into instances, consider creating profile or SSM Default Host Management
   # checkov:skip=CKV_AWS_79: "Ensure Instance Metadata Service Version 1 is not enabled"
   for_each      = var.regions
   region        = each.key
@@ -12,7 +13,6 @@ resource "aws_launch_template" "web" {
       #!/bin/bash
       yum update -y
       yum install -y httpd
-      echo -e "\n\nKeepAlive Off" >> /etc/httpd/conf/httpd.conf
       systemctl start httpd
       systemctl enable httpd
       echo "<h2>Instance ID: $(curl -s http://169.254.169.254/latest/meta-data/instance-id)</h2>" > /var/www/html/index.html
