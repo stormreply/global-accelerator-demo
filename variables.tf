@@ -1,12 +1,3 @@
-variable "create_network_manager" {
-  description = <<-EOD
-    Bool for creating a network manager visualization of this
-    Global Accelaerator setup. Beta.
-  EOD
-  type        = bool
-  default     = false
-}
-
 variable "instance_type" {
   description = <<-EOD
     EC2 instance type to be used for the Global Accelerator endpoints
