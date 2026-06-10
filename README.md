@@ -57,9 +57,7 @@ Follow these steps in order to explore this demo:
 
 ## Modules
 
-| Name | Source | Version |
-|------|--------|---------|
-| <a name="module_network-manager"></a> [network-manager](#module\_network-manager) | ./network-manager | n/a |
+No modules.
 
 ## Resources
 
@@ -84,7 +82,6 @@ Follow these steps in order to explore this demo:
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input__metadata"></a> [\_metadata](#input\_\_metadata) | Select metadata passed from GitHub Workflows | <pre>object({<br/>    actor      = string # Github actor (deployer) of the deployment<br/>    catalog_id = string # SLT catalog id of this module<br/>    deployment = string # slt-<catalod_id>-<repo>-<actor><br/>    ref        = string # Git reference of the deployment<br/>    ref_name   = string # Git ref_name (branch) of the deployment<br/>    repo       = string # GitHub short repository name (without owner) of the deployment<br/>    repository = string # GitHub full repository name (including owner) of the deployment<br/>    sha        = string # Git (full-length, 40 char) commit SHA of the deployment<br/>    short_name = string # slt-<catalog_id>-<actor><br/>    time       = string # Timestamp of the deployment<br/>  })</pre> | <pre>{<br/>  "actor": "",<br/>  "catalog_id": "",<br/>  "deployment": "",<br/>  "ref": "",<br/>  "ref_name": "",<br/>  "repo": "",<br/>  "repository": "",<br/>  "sha": "",<br/>  "short_name": "",<br/>  "time": ""<br/>}</pre> | no |
-| <a name="input_create_network_manager"></a> [create\_network\_manager](#input\_create\_network\_manager) | Bool for creating a network manager visualization of this<br/>Global Accelaerator setup. Beta. | `bool` | `false` | no |
 | <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | EC2 instance type to be used for the Global Accelerator endpoints | `string` | `"t3.micro"` | no |
 | <a name="input_regions"></a> [regions](#input\_regions) | A map of regions where endpoints for this Global Accelerator<br/>are to be configured. Keys of this map are region names like<br/>e.g. "eu-central-1", values are objects as seen in the type<br/>definition. | <pre>map(object({<br/>    traffic_dial_percentage        = number<br/>    endpoint_configuration_weights = list(number)<br/>  }))</pre> | <pre>{<br/>  "eu-central-1": {<br/>    "endpoint_configuration_weights": [<br/>      192,<br/>      64<br/>    ],<br/>    "traffic_dial_percentage": "90"<br/>  },<br/>  "eu-west-1": {<br/>    "endpoint_configuration_weights": [<br/>      128,<br/>      128<br/>    ],<br/>    "traffic_dial_percentage": "10"<br/>  }<br/>}</pre> | no |
 
