@@ -15,8 +15,8 @@ resource "aws_launch_template" "web" {
       echo -e "\n\nKeepAlive Off" >> /etc/httpd/conf/httpd.conf
       systemctl start httpd
       systemctl enable httpd
-      echo "<h3>Instance ID: $(curl -s http://169.254.169.254/latest/meta-data/instance-id)</h3>" > /var/www/html/index.html
-      echo "<h3>Region: ${each.key}</h3>" >> /var/www/html/index.html
+      echo "<h2>Instance ID: $(curl -s http://169.254.169.254/latest/meta-data/instance-id)</h2>" > /var/www/html/index.html
+      echo "<h2>Region: ${each.key}</h2>" >> /var/www/html/index.html
       echo "OK" > /var/www/html/health
     EOF
   )
