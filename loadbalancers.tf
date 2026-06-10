@@ -22,6 +22,7 @@ resource "aws_lb" "demo" {
   #
   enable_http2      = false # http2 would try to keep conn open
   client_keep_alive = 60    # 60 seconds is the minumum
+  idle_timeout      = 1     #  1 second  is the minimum
 
   security_groups = [aws_security_group.web[each.value.region].id]
   subnets         = local.default_subnets[each.value.region][*].id
