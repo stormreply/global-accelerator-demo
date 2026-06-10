@@ -1,6 +1,7 @@
-# output "amis" {
-#   value = data.aws_ami.amazon_linux
-# }
+output "artifact" {
+  description = "Artifact: A test script curl'ing the Global Accelerator URL"
+  value       = "test.sh"
+}
 
 output "availability_zones" {
   value = local.availability_zones
