@@ -9,20 +9,5 @@ resource "aws_launch_template" "web" {
 
   vpc_security_group_ids = [aws_security_group.web[each.key].id]
 
-  user_data = base64encode(<<-EOF
-      #!/bin/bash
-      yum update -y
-      yum install -y httpd
-      systemctl start httpd
-      systemctl enable httpd
-      cat << EOS >> /var/www/html/index.html
-      <style>
-      * { font-family: sans-serif; margin: 20px; }
-      </style>
-      <!-- Instance ID --><h2>$(curl -s http://169.254.169.254/latest/meta-data/instance-id)</h2>
-      <!-- Region --><h2>${each.key}</h2>
-      EOS
-      echo "OK" > /var/www/html/health
-    EOF
-  )
+  user_data = data.cloudinit_config.web[each.key].rendered
 }

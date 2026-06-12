@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
 minimalistic proxy server
+- stripping path, forward to <TARGET>/
 - closing the connection after each request
 - taking care of CORS
 """

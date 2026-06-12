@@ -1,4 +1,4 @@
-data "cloudinit_config" "proxy" {
+data "cloudinit_config" "web" {
   for_each = var.regions
 
   gzip          = false
