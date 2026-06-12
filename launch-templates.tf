@@ -19,8 +19,8 @@ resource "aws_launch_template" "web" {
       <style>
       * { font-family: sans-serif; margin: 20px; }
       </style>
-      <!-- Instance ID -->$(curl -s http://169.254.169.254/latest/meta-data/instance-id)
-      <!-- Region -->${each.key}
+      <!-- Instance ID --><h2>$(curl -s http://169.254.169.254/latest/meta-data/instance-id)</h2>
+      <!-- Region --><h2>${each.key}</h2>
       EOS
       echo "OK" > /var/www/html/health
     EOF

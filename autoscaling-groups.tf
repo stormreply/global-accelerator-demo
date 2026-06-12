@@ -7,7 +7,7 @@ resource "aws_autoscaling_group" "web" {
     each.value.index
   ])
   vpc_zone_identifier = local.default_subnets[each.value.region][*].id
-  target_group_arns   = [aws_lb_target_group.demo[each.key].arn]
+  target_group_arns   = [aws_lb_target_group.web[each.key].arn, aws_lb_target_group.proxy[each.key].arn]
   health_check_type   = "ELB"
   min_size            = 0
   max_size            = 1

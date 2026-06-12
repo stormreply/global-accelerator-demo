@@ -9,7 +9,7 @@ NUMBER_CURL_CALLS=${2:-40}
   while [ $i -lt $NUMBER_CURL_CALLS ] ; do
     curl -s "$GLOBAL_ACCELERATOR_URL" \
     | grep Instance \
-    | sed -e 's/^.* \(.*\)<.*/\1/g'
+    | sed -e 's/^.*<h2>\(.*\)<\/h2>.*$/\1/g'
     sleep 0.1
     i=$((i + 1))
   done

@@ -1,8 +1,30 @@
-resource "aws_lb_target_group" "demo" {
+resource "aws_lb_target_group" "proxy" {
   # checkov:skip=CKV_AWS_378: "Ensure AWS Load Balancer doesn't use HTTP protocol"
   for_each = local.loadbalancers
   region   = each.value.region
-  name     = "${local._metadata.short_name}-${each.value.index}"
+  name     = "${local._metadata.short_name}-proxy-${each.value.index}"
+  port     = 8080
+  protocol = "HTTP"
+  vpc_id   = aws_default_vpc.default[each.value.region].id
+
+  health_check {
+    enabled             = true
+    healthy_threshold   = 2
+    interval            = 5
+    matcher             = "200"
+    path                = "/"
+    port                = "traffic-port"
+    protocol            = "HTTP"
+    timeout             = 2
+    unhealthy_threshold = 2
+  }
+}
+
+resource "aws_lb_target_group" "web" {
+  # checkov:skip=CKV_AWS_378: "Ensure AWS Load Balancer doesn't use HTTP protocol"
+  for_each = local.loadbalancers
+  region   = each.value.region
+  name     = "${local._metadata.short_name}-web-${each.value.index}"
   port     = 80
   protocol = "HTTP"
   vpc_id   = aws_default_vpc.default[each.value.region].id

@@ -17,9 +17,9 @@ resource "aws_security_group" "web" {
   }
 
   ingress {
-    description = "Allow incoming web traffic on port 443 (HTTPS)"
-    from_port   = 443
-    to_port     = 443
+    description = "Allow incoming proxy traffic on port 8080 (HTTP)"
+    from_port   = 8080
+    to_port     = 8080
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
