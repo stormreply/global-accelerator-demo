@@ -5,17 +5,6 @@ data "cloudinit_config" "web" {
   base64_encode = true
 
   part {
-    content_type = "text/cloud-config"
-    content      = <<-EOF
-      #cloud-config
-      runcmd:
-        - echo "BEGIN -- part 0 - init"
-        - dnf install -y python3
-        - echo "END -- part 0 - init"
-    EOF
-  }
-
-  part {
     filename     = "01-start-proxyserver.sh"
     content_type = "text/x-shellscript"
     content = templatefile("${path.module}/cloudinit/01-start-proxyserver.py", {
