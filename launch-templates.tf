@@ -15,8 +15,13 @@ resource "aws_launch_template" "web" {
       yum install -y httpd
       systemctl start httpd
       systemctl enable httpd
-      echo "<h2>Instance ID: $(curl -s http://169.254.169.254/latest/meta-data/instance-id)</h2>" > /var/www/html/index.html
-      echo "<h2>Region: ${each.key}</h2>" >> /var/www/html/index.html
+      cat << EOS >> /var/www/html/index.html
+      <style>
+      * { font-family: sans-serif; margin: 20px; }
+      </style>
+      <!-- Instance ID -->$(curl -s http://169.254.169.254/latest/meta-data/instance-id)
+      <!-- Region -->${each.key}
+      EOS
       echo "OK" > /var/www/html/health
     EOF
   )
