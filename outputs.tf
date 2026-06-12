@@ -4,7 +4,8 @@ output "artifact" {
 }
 
 output "availability_zones" {
-  value = local.availability_zones
+  description = "Availability zones of the regions operated. Helpful with the zone_ids."
+  value       = local.availability_zones
 }
 
 output "global_accelerator" {
