@@ -44,7 +44,11 @@ class ProxyHandler(http.server.BaseHTTPRequestHandler):
 
 
 if __name__ == "__main__":
-    server = http.server.HTTPServer(("localhost", PORT), ProxyHandler)
+    pid = os.fork()
+    if pid > 0:
+        print(f"proxy forked to PID {pid}, running on {PORT}")
+        sys.exit(0)
+    server = http.server.HTTPServer(("0.0.0.0", PORT), ProxyHandler)
     print(f"proxy running on {PORT}, aiming at {TARGET}")
     server.serve_forever()
 
