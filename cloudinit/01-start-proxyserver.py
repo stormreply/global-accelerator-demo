@@ -11,7 +11,7 @@ import os
 import sys
 import urllib.request
 
-TARGET = "$global_accelerator_url"
+TARGET = "${global_accelerator_url}"
 PORT = 8080
 
 print(f"BEGIN -- {os.path.basename(sys.argv[0])}")
@@ -48,6 +48,7 @@ if __name__ == "__main__":
     if pid > 0:
         print(f"proxy forked to PID {pid}, running on {PORT}")
         sys.exit(0)
+    os.setsid()
     server = http.server.HTTPServer(("0.0.0.0", PORT), ProxyHandler)
     print(f"proxy running on {PORT}, aiming at {TARGET}")
     server.serve_forever()
