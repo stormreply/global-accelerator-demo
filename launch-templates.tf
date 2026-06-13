@@ -9,5 +9,11 @@ resource "aws_launch_template" "web" {
 
   vpc_security_group_ids = [aws_security_group.web[each.key].id]
 
+  metadata_options {
+    http_endpoint          = "enabled"
+    http_tokens            = "required"
+    instance_metadata_tags = "enabled"
+  }
+
   user_data = data.cloudinit_config.web[each.key].rendered
 }

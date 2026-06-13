@@ -16,12 +16,17 @@ instance_id=$(
     -H "X-aws-ec2-metadata-token: $token" \
     http://169.254.169.254/latest/meta-data/instance-id
 )
+instance_name=$(
+    curl \
+    -H "X-aws-ec2-metadata-token: $token" \
+    http://169.254.169.254/latest/meta-data/tags/instance/Name
+)
 cat << EOS >> /var/www/html/index.html
 <style>
 * { font-family: sans-serif; margin: 20px; }
 </style>
 <!-- Instance ID --><h2>$instance_id</h2>
-<!-- Region --><h2>${region}</h2>
+<!-- Instance Name --><h2>$instance_name</h2>
 EOS
 echo "OK" > /var/www/html/health
 
