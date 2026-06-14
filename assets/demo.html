@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    overflow: hidden;
+    width: 1091px;
+    height: 751px;
+  }
+  .stage {
+    position: relative;
+    width: 1091px;
+    height: 751px;
+    background: #ffffff;
+  }
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1091px;
+    height: 751px;
+    border: none;
+    display: block;
+  }
+  #frame1 {
+    background: #ffffff;
+  }
+  #frame3, #frame4 {
+    background: #000000;
+    display: none;
+  }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <!-- Phase 1 (0s - 3s): original architecture diagram on white background -->
+    <iframe id="frame1" src="architecture.drawio.svg"></iframe>
+    <!-- Phase 3 (6s - 9s): color-inverted static architecture diagram -->
+    <iframe id="frame3" src="architecture.inverted.svg"></iframe>
+    <!-- Phase 4 (9s onward): live, animated dashboard version (preloaded, hidden) -->
+    <iframe id="frame4"></iframe>
+  </div>
+
+  <script>
+    // Phase 2 (3s - 6s): hide phase 1, switch page to black background for 3s
+    setTimeout(function () {
+      document.getElementById("frame1").style.display = "none";
+      document.documentElement.style.background = "#000000";
+      document.body.style.background = "#000000";
+      document.querySelector(".stage").style.background = "#000000";
+    }, 3000);
+
+    // Phase 3 (6s - 9s): show inverted static diagram for 3s
+    setTimeout(function () {
+      document.getElementById("frame3").style.display = "block";
+    }, 6000);
+
+    // Phase 4 (9s onward): hide phase 3, load and reveal the live animated dashboard.
+    // Loading is deferred until now so its counters/script only start once visible,
+    // forwarding this page's ?url= parameter (if any) to the dashboard iframe.
+    setTimeout(function () {
+      document.getElementById("frame3").style.display = "none";
+      var frame4 = document.getElementById("frame4");
+      frame4.src = "architecture.black.svg" + window.location.search;
+      frame4.style.display = "block";
+    }, 9000);
+  </script>
+</body>
+</html>
