@@ -581,7 +581,11 @@
         var index = regionToIndex(name);
         if (index !== null) {
           animateAlong(index);
-          updateStats(index, name);
+          // Only update counters/percentages once the traffic dot has
+          // reached the end of its track.
+          setTimeout(function () {
+            updateStats(index, name);
+          }, DUR * 1000);
         } else {
           console.warn("Could not determine region from response:", name);
         }
@@ -594,6 +598,7 @@
       });
   }
 
-  runOnce();
+  // Wait 3s after the dashboard becomes visible before starting the traffic animation.
+  setTimeout(runOnce, 3000);
   ]]></script>
 </svg>

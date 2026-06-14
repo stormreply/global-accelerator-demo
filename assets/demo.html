@@ -29,7 +29,7 @@
   #frame1 {
     background: #ffffff;
   }
-  #frame3, #frame4 {
+  #frame4 {
     background: #000000;
     display: none;
   }
@@ -39,9 +39,7 @@
   <div class="stage">
     <!-- Phase 1 (0s - 3s): original architecture diagram on white background -->
     <iframe id="frame1" src="architecture.drawio.svg"></iframe>
-    <!-- Phase 3 (6s - 9s): color-inverted static architecture diagram -->
-    <iframe id="frame3" src="architecture.inverted.svg"></iframe>
-    <!-- Phase 4 (9s onward): live, animated dashboard version (preloaded, hidden) -->
+    <!-- Phase 3 (6s onward): dashboard diagram; traffic animation starts itself after 3s -->
     <iframe id="frame4"></iframe>
   </div>
 
@@ -54,20 +52,15 @@
       document.querySelector(".stage").style.background = "#000000";
     }, 3000);
 
-    // Phase 3 (6s - 9s): show inverted static diagram for 3s
+    // Phase 3 (6s onward): load and reveal the dashboard diagram. Loading is deferred
+    // until now so it only starts once visible, forwarding this page's ?url=
+    // parameter (if any) to the dashboard iframe. The dashboard itself waits another
+    // 3s before starting the traffic animation/polling.
     setTimeout(function () {
-      document.getElementById("frame3").style.display = "block";
-    }, 6000);
-
-    // Phase 4 (9s onward): hide phase 3, load and reveal the live animated dashboard.
-    // Loading is deferred until now so its counters/script only start once visible,
-    // forwarding this page's ?url= parameter (if any) to the dashboard iframe.
-    setTimeout(function () {
-      document.getElementById("frame3").style.display = "none";
       var frame4 = document.getElementById("frame4");
       frame4.src = "architecture.black.svg" + window.location.search;
       frame4.style.display = "block";
-    }, 9000);
+    }, 6000);
   </script>
 </body>
 </html>
