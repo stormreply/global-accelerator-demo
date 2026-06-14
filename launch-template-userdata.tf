@@ -15,6 +15,6 @@ data "cloudinit_config" "web" {
   part {
     filename     = "02-start-webserver.sh"
     content_type = "text/x-shellscript"
-    content = file("${path.module}/cloudinit/02-start-webserver.sh")
+    content      = file("${path.module}/cloudinit/02-start-webserver.sh")
   }
 }
