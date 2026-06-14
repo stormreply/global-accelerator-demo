@@ -9,6 +9,10 @@ resource "aws_launch_template" "web" {
 
   vpc_security_group_ids = [aws_security_group.web[each.key].id]
 
+  iam_instance_profile {
+    name = aws_iam_instance_profile.web.name
+  }
+
   metadata_options {
     http_endpoint          = "enabled"
     http_tokens            = "required"

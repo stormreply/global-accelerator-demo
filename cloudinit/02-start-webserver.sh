@@ -5,6 +5,12 @@ echo "BEGIN -- $(basename $0)"
 dnf install -y httpd
 systemctl start httpd
 systemctl enable httpd
+
+aws s3 cp s3://${assets_bucket}/architecture.drawio.svg /var/www/html/architecture.drawio.svg
+aws s3 cp s3://${assets_bucket}/architecture.inverted.svg /var/www/html/architecture.inverted.svg
+aws s3 cp s3://${assets_bucket}/architecture.black.svg /var/www/html/architecture.black.svg
+aws s3 cp s3://${assets_bucket}/demo.html /var/www/html/demo.html
+
 token=$(
     curl \
     -X PUT \
