@@ -35,7 +35,35 @@ Deployment of this member should take less than 4 minutes on GitHub resources.
 
 Follow these steps in order to explore this demo:
 
-1. TBD
+1. In your account, go to the _Global Accelerator service_ page
+1. Under _Accelerators_, you will find the accelerator with the
+   _global-accelerator-demo_ infix. Click on it.
+1. Check the details on the next page. Under _Listeners_, you
+   will find a single Listener on port 80. Click on the link in
+   the column _Listener ID_.
+1. On the next page, you will find two _Endpoint groups_, one in
+   region _eu-central-1_, with a _Traffic dial_ of 90%, and one in
+   region _eu-west-1_, with a _traffic dial_ of 10%.
+1. Note the links in the _Endpoint group ID_ column. Click on both
+   these two links, one after the other.
+1. The next page will show you two _Endpoints_, pointing to Elastic
+   Load Balancers. Note their respektive _Weight_: In _eu-central-1_,
+   one has a _Weight_ of 192, the other one has a _Weight_ of 64.
+   For _eu-west-1_, the _Weight_ is 128 for both endpoints.
+1. Now switch to the _Apply_ workflow in _Github_ from where you
+   built this demo. On the top left of the workflow run page, click
+   on _Summary_.
+1. Scroll to the bottom of the _Summary_ page. Note that it does
+   not let you scroll there from everywhere on the page. Position
+   your mouse pointer on the left edge of the page in order to be
+   able to scroll down to the bottom.
+1. Under _Artifacts_, you will find an artifact having _test.sh_
+   in its name. Download it. If it comes as a _.zip_ file, double
+   click on it in order to unzip it.
+1. As a result, you should have received a Shell script having
+   _test.sh_ as part of its name
+
+
 1. ...
 
 <details>
