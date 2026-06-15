@@ -48,6 +48,11 @@
       var frame2 = document.getElementById("frame2");
       frame2.src = "architecture.black.svg" + window.location.search;
       frame2.style.display = "block";
+
+      // Switch the surrounding browser area to black to match architecture.black.
+      document.documentElement.style.background = "#000000";
+      document.body.style.background = "#000000";
+      document.querySelector(".stage").style.background = "#000000";
     }, 3000);
   </script>
 </body>

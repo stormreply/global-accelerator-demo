@@ -513,14 +513,20 @@
     } catch (e) {}
     return "http://ac9ad246b8784eced.awsglobalaccelerator.com/proxy";
   })();
-  var STATUS_URL = (function () {
+  var URL_PARAM = (function () {
     try {
       var params = new URLSearchParams(window.location.search);
-      return params.get("url") || DEFAULT_STATUS_URL;
+      return params.get("url");
     } catch (e) {
-      return DEFAULT_STATUS_URL;
+      return null;
     }
   })();
+  var STATUS_URL = URL_PARAM || DEFAULT_STATUS_URL;
+
+  // If loaded directly from the filesystem (no http/https) and no explicit
+  // ?url= override was given, there is nothing to fetch from. In that case
+  // pick a random region for each interval instead of calling the status URL.
+  var USE_RANDOM = (window.location.protocol === "file:") && !URL_PARAM;
 
   // counts[index] = how often this region's instance has been seen, plus its latest instance name
   var REGION_CODES = ["euc1-0", "euc1-1", "euw1-0", "euw1-1"];
@@ -573,6 +579,19 @@
   }
 
   function runOnce() {
+    if (USE_RANDOM) {
+      var index = Math.floor(Math.random() * 4);
+      var name = "random-" + REGION_CODES[index];
+      animateAlong(index);
+      // Only update counters/percentages once the traffic dot has
+      // reached the end of its track.
+      setTimeout(function () {
+        updateStats(index, name);
+      }, DUR * 1000);
+      setTimeout(runOnce, DUR * 1000);
+      return;
+    }
+
     fetch(STATUS_URL)
       .then(function (res) { return res.text(); })
       .then(function (text) {
