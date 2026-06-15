@@ -77,6 +77,7 @@ Follow these steps in order to explore this demo:
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 6 |
 | <a name="requirement_cloudinit"></a> [cloudinit](#requirement\_cloudinit) | >= 2 |
+| <a name="requirement_null"></a> [null](#requirement\_null) | >= 3 |
 
 ## Providers
 
@@ -84,6 +85,7 @@ Follow these steps in order to explore this demo:
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | >= 6 |
 | <a name="provider_cloudinit"></a> [cloudinit](#provider\_cloudinit) | >= 2 |
+| <a name="provider_null"></a> [null](#provider\_null) | >= 3 |
 
 ## Modules
 
@@ -112,6 +114,7 @@ No modules.
 | [aws\_s3\_bucket\_public\_access\_block.assets](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_public_access_block) | resource |
 | [aws\_s3\_object.assets](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_object) | resource |
 | [aws\_security\_group.web](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
+| [null\_resource.copy\_test\_script](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
 | [aws\_ami.amazon\_linux](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ami) | data source |
 | [aws\_availability\_zones.available](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/availability_zones) | data source |
 | [cloudinit\_config.web](https://registry.terraform.io/providers/hashicorp/cloudinit/latest/docs/data-sources/config) | data source |
