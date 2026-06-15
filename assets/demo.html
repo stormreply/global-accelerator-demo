@@ -29,7 +29,7 @@
   #frame1 {
     background: #ffffff;
   }
-  #frame4 {
+  #frame2 {
     background: #000000;
     display: none;
   }
@@ -39,28 +39,20 @@
   <div class="stage">
     <!-- Phase 1 (0s - 3s): original architecture diagram on white background -->
     <iframe id="frame1" src="architecture.drawio.svg"></iframe>
-    <!-- Phase 3 (6s onward): dashboard diagram; traffic animation starts itself after 3s -->
-    <iframe id="frame4"></iframe>
+    <!-- Phase 2 (3s onward): dashboard diagram; traffic animation starts itself after 3s -->
+    <iframe id="frame2"></iframe>
   </div>
 
   <script>
-    // Phase 2 (3s - 6s): hide phase 1, switch page to black background for 3s
-    setTimeout(function () {
-      document.getElementById("frame1").style.display = "none";
-      document.documentElement.style.background = "#000000";
-      document.body.style.background = "#000000";
-      document.querySelector(".stage").style.background = "#000000";
-    }, 3000);
-
-    // Phase 3 (6s onward): load and reveal the dashboard diagram. Loading is deferred
+    // Phase 2 (3s onward): load and reveal the dashboard diagram. Loading is deferred
     // until now so it only starts once visible, forwarding this page's ?url=
     // parameter (if any) to the dashboard iframe. The dashboard itself waits another
     // 3s before starting the traffic animation/polling.
     setTimeout(function () {
-      var frame4 = document.getElementById("frame4");
-      frame4.src = "architecture.black.svg" + window.location.search;
-      frame4.style.display = "block";
-    }, 6000);
+      var frame2 = document.getElementById("frame2");
+      frame2.src = "architecture.black.svg" + window.location.search;
+      frame2.style.display = "block";
+    }, 3000);
   </script>
 </body>
 </html>
