@@ -31,6 +31,7 @@
   }
   #frame2 {
     background: #000000;
+    display: none;
   }
 </style>
 </head>
@@ -39,17 +40,13 @@
     <!-- Phase 1 (0s - 3s): original architecture diagram on white background -->
     <iframe id="frame1" src="architecture.drawio.svg"></iframe>
     <!-- Phase 2 (3s onward): dashboard diagram; traffic animation starts itself after 3s -->
-    <iframe id="frame2"></iframe>
+    <iframe id="frame2" src="architecture.black.svg"></iframe>
   </div>
 
   <script>
-    // Phase 2 (3s onward): load and reveal the dashboard diagram. Loading is deferred
-    // until now so it only starts once visible, forwarding this page's ?url=
-    // parameter (if any) to the dashboard iframe. The dashboard itself waits another
-    // 3s before starting the traffic animation/polling.
     setTimeout(function () {
       var frame2 = document.getElementById("frame2");
-      frame2.src = "architecture.demo.svg" + window.location.search;
+      frame2.src = "architecture.black.svg" + window.location.search;
       frame2.style.display = "block";
     }, 3000);
   </script>
