@@ -1,6 +1,6 @@
 output "artifact" {
   description = "Artifact: A test script curl'ing the Global Accelerator URL"
-  value       = "test.sh"
+  value       = "${local._deployment}-test.sh"
 }
 
 output "availability_zones" {
