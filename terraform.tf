@@ -11,5 +11,9 @@ terraform {
       source  = "hashicorp/cloudinit"
       version = ">= 2"
     }
+    null = {
+      source  = "hashicorp/null"
+      version = ">= 3"
+    }
   }
 }
