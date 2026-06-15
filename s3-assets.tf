@@ -20,7 +20,7 @@ resource "aws_s3_bucket_public_access_block" "assets" {
 locals {
   _asset_files = {
     "architecture.drawio.svg" = "${path.module}/assets/architecture.drawio.svg"
-    "architecture.demo.svg"   = "${path.module}/assets/architecture.demo.svg"
+    "architecture.demo.svg"   = "${path.module}/assets/architecture.black.svg"
     "demo.html"               = "${path.module}/assets/demo.html"
   }
 }
