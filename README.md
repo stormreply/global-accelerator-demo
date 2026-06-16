@@ -36,35 +36,73 @@ Deployment of this member should take less than 4 minutes on GitHub resources.
 Follow these steps in order to explore this demo:
 
 1. In your account, go to the _Global Accelerator service_ page
-1. Under _Accelerators_, you will find the accelerator with the
-   _global-accelerator-demo_ infix. Click on it.
+1. Under _Accelerators_, click the accelerator link with the
+   _global-accelerator-demo_ infix.
 1. Check the details on the next page. Under _Listeners_, you
-   will find a single Listener on port 80. Click on the link in
+   will find a single Listener on port 80. Follow the link in
    the column _Listener ID_.
 1. On the next page, you will find two _Endpoint groups_, one in
    region _eu-central-1_, with a _Traffic dial_ of 90%, and one in
    region _eu-west-1_, with a _traffic dial_ of 10%.
-1. Note the links in the _Endpoint group ID_ column. Click on both
+1. Note the links in the _Endpoint group ID_ column. Click both
    these two links, one after the other.
 1. The next page will show you two _Endpoints_, pointing to Elastic
    Load Balancers. Note their respektive _Weight_: In _eu-central-1_,
    one has a _Weight_ of 192, the other one has a _Weight_ of 64.
    For _eu-west-1_, the _Weight_ is 128 for both endpoints.
-1. Now switch to the _Apply_ workflow in _Github_ from where you
+
+1. Now switch to the _Apply_ workflow in Github from where you
    built this demo. On the top left of the workflow run page, click
    on _Summary_.
 1. Scroll to the bottom of the _Summary_ page. Note that it does
    not let you scroll there from everywhere on the page. Position
    your mouse pointer on the left edge of the page in order to be
    able to scroll down to the bottom.
-1. Under _Artifacts_, you will find an artifact having _test.sh_
-   in its name. Download it. If it comes as a _.zip_ file, double
-   click on it in order to unzip it.
-1. As a result, you should have received a Shell script having
-   _test.sh_ as part of its name
+1. Under _Artifacts_, you will find an artifact ending on _-test.sh_.
+   Download it. If it comes as a _.zip_ file, double click it in
+   order to unzip it. As a result, you should receive a Shell script
+   ending on _-test.sh_ in your _Downloads_ folder.
+1. On the Github _Apply_ workflow summary page, you will also find
+   an _Output_ section showing the _Global Accelerator_ URL. Copy
+   that URL into your Clipboard.
+1. Now, in a Shell terminal, run the _-test.sh_ script using bash:
 
+   ```bash <path>/<prefix>-test.sh <global accelerator url>```
 
-1. ...
+   That line is probably gonna look something like
+
+   ```bash ~/Downloads/slt-...-test.sh http://...awsglobalaccelerator.com```
+
+1. Hit _Enter_ and execute the script. It will call the Global
+   Accelerator URL 40 times, using curl. As output, the script will
+   show the name of each instance it was directed to by Global
+   Accelerator. You will recognize a region shortcut as part of
+   the name, like _euc1_ and _euw1_, and a _0_ or a _1_ at the
+   end, representing either endpoint in that region.
+1. You can add the number of calls to Global Accelerator as a
+   second parameter to the script if you like, and also interrupt
+   the script using Control-C. In any case, the script will show
+   percentage rates at the end about how often each endpoint was
+   called. The first two endpoints in that sorted list should
+   amount to (more or less) some 90% - corresponding to the
+   _dial_ value.
+1. Now use the Global Accelerator URL in a browser window input
+   field and hit _Enter_. Its output in the browser will show
+   the Instance ID and the Instance Name. Reload that page,
+   maybe 10 or 20 times. The output does not really change often.
+   It seems to stick with the same value(s) for quite some time.
+   Why?
+1. Now append _/proxy_ to the Global Accelerator URL in the
+   browser window's input, hit _Enter_ and reload a couple times.
+   The output seems to change much more often now. Why?
+
+   The answer is in the code. Try to think about it first.
+   While doing so, replace _/proxy_ with _/demo.html_ in the
+   browser input, hit _Enter_ and enjoy a little demo.
+
+   ...
+
+1.
 
 <details>
 <summary><h2>Terraform Docs</h2></summary>

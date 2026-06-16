@@ -37,7 +37,9 @@ output "regions" {
 output "_summary" {
   description = "Key-value pairs to be published in the GITHUB_STEP_SUMMARY"
   value = {
-    "Global Accelerator" = "http://${aws_globalaccelerator_accelerator.demo.dns_name}"
-    "Regions"            = var.regions
+    "Global Accelerator URL" = "http://${aws_globalaccelerator_accelerator.demo.dns_name}"
+    "Proxy URL"              = "http://${aws_globalaccelerator_accelerator.demo.dns_name}/proxy"
+    "Demo URL"               = "http://${aws_globalaccelerator_accelerator.demo.dns_name}/demo"
+    "Regions"                = var.regions
   }
 }

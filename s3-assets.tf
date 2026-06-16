@@ -21,7 +21,7 @@ locals {
   _asset_files = {
     "architecture.drawio.svg" = "${path.module}/assets/architecture.drawio.svg"
     "architecture.black.svg"  = "${path.module}/assets/architecture.black.svg"
-    "demo.html"               = "${path.module}/assets/demo.html"
+    "demo"                    = "${path.module}/assets/demo.html"
   }
 }
 
