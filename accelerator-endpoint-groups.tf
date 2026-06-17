@@ -12,7 +12,7 @@ resource "aws_globalaccelerator_endpoint_group" "demo" {
 
   # The number of consecutive health checks required to set the state of a
   # healthy endpoint to unhealthy, or to set an unhealthy endpoint to healthy.
-  threshold_count = 1
+  threshold_count = 3
 
   # The percentage of traffic to send to an AWS Region. Default 100 means
   # every client would be routed to the closest endpoint (group).
