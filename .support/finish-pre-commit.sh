@@ -14,4 +14,4 @@ awk '
 
 rm README.new
 
-git diff
+git --no-pager diff
