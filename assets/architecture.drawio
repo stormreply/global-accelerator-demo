@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.5.1 Chrome/124.0.6367.207 Electron/30.0.6 Safari/537.36">
   <diagram name="Seite-1" id="BtAyL0-GuPOaRMJ-Kd1m">
-    <mxGraphModel dx="1222" dy="765" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="1222" dy="814" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -96,18 +96,17 @@
         <mxCell id="58Sf1-AYVXkVAdG3ewIz-157" parent="58Sf1-AYVXkVAdG3ewIz-66" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;rotation=-90;" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;weight: 64&lt;/font&gt;" vertex="1">
           <mxGeometry height="30" width="100" x="290" y="385" as="geometry" />
         </mxCell>
-        <mxCell id="58Sf1-AYVXkVAdG3ewIz-136" edge="1" parent="1" source="8dHVtOiEz4c_SUl7e4nf-1" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;">
+        <mxCell id="58Sf1-AYVXkVAdG3ewIz-136" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;">
           <mxGeometry relative="1" as="geometry">
+            <mxPoint x="547.857832445382" y="480" as="sourcePoint" />
             <mxPoint x="450" y="480" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="58Sf1-AYVXkVAdG3ewIz-137" edge="1" parent="1" source="8dHVtOiEz4c_SUl7e4nf-1" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;">
+        <mxCell id="58Sf1-AYVXkVAdG3ewIz-137" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;">
           <mxGeometry relative="1" as="geometry">
+            <mxPoint x="612.1421675546178" y="480" as="sourcePoint" />
             <mxPoint x="710" y="480" as="targetPoint" />
           </mxGeometry>
-        </mxCell>
-        <mxCell id="8dHVtOiEz4c_SUl7e4nf-1" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#7AA116;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;pointerEvents=1;shape=mxgraph.aws4.s3_multi_region_access_points;aspect=fixed;rounded=0;" value="" vertex="1">
-          <mxGeometry height="80" width="80" x="540" y="440" as="geometry" />
         </mxCell>
         <mxCell id="58Sf1-AYVXkVAdG3ewIz-117" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.auto_scaling2;" value="" vertex="1">
           <mxGeometry height="80" width="80" x="160" y="320" as="geometry" />
@@ -156,6 +155,9 @@
         </mxCell>
         <mxCell id="58Sf1-AYVXkVAdG3ewIz-155" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;dial: 10&lt;/font&gt;" vertex="1">
           <mxGeometry height="30" width="60" x="650" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="8Z-5Fh23VFUYyPTaVrWl-1" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.global_accelerator;" value="" vertex="1">
+          <mxGeometry height="80" width="80" x="540" y="440" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
